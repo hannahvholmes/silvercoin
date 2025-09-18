@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import {
   Star,
@@ -13,14 +12,14 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-// --- Helper UI bits (shadcn-like minimal wrappers) ---
-const Chip = ({ children }: { children: ReactNode }) => (
+// --- Helper UI bits ---
+const Chip = ({ children }: { children: any }) => (
   <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/10 text-yellow-300 border border-yellow-400/30 px-3 py-1 text-xs font-medium shadow-[inset_0_0_0_1px_rgba(0,0,0,.2)]">
     {children}
   </span>
 );
 
-const Pill = ({ children }: { children: ReactNode }) => (
+const Pill = ({ children }: { children: any }) => (
   <span className="inline-flex items-center rounded-full bg-zinc-800/70 border border-zinc-700 px-3 py-1 text-xs text-zinc-200">
     {children}
   </span>
@@ -32,8 +31,8 @@ const Section = ({
   cta,
 }: {
   title: string;
-  children: ReactNode;
-  cta?: ReactNode;
+  children: any;
+  cta?: any;
 }) => (
   <section className="mt-8">
     <div className="flex items-center justify-between mb-3">
@@ -78,15 +77,11 @@ function GameTile({ name }: { name: string }) {
       whileTap={{ scale: 0.98 }}
       className="relative aspect-[4/3] rounded-2xl border border-amber-400/20 bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 shadow-[0_6px_20px_rgba(0,0,0,.4)] overflow-hidden group"
     >
-      {/* faux marquee frame */}
       <div className="absolute inset-0 rounded-2xl ring-1 ring-amber-500/40" />
-      {/* placeholder art */}
       <div className="absolute inset-0 flex items-center justify-center">
         <span className="text-4xl">🎰</span>
       </div>
-      {/* gradient shine */}
       <div className="absolute -inset-x-6 -top-10 h-24 bg-gradient-to-b from-white/20 to-transparent rotate-6" />
-      {/* label */}
       <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
         <div className="flex items-center gap-2">
           <Star className="size-4 text-amber-300 drop-shadow" />
@@ -139,7 +134,6 @@ function TopBar() {
 function MarqueeLogo() {
   return (
     <div className="relative flex flex-col items-center text-center py-6">
-      {/* background columns */}
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1400&auto=format&fit=crop')] bg-cover bg-center opacity-20" />
       <div className="relative">
         <motion.div
@@ -191,18 +185,13 @@ function FooterCTA() {
 export default function SilverCoinLanding() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1a0f08] via-[#2a1309] to-[#120904] text-amber-50">
-      {/* subtle vignette */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(70%_50%_at_50%_0%,rgba(255,200,50,.15),transparent_60%)]" />
       <TopBar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6">
         <MarqueeLogo />
         <Section
           title="Slots"
-          cta={
-            <a className="text-xs text-amber-300 hover:underline" href="#">
-              See all
-            </a>
-          }
+          cta={<a className="text-xs text-amber-300 hover:underline" href="#">See all</a>}
         >
           <Grid items={SLOTS} />
         </Section>
