@@ -184,36 +184,45 @@ function FooterCTA() {
 // --- Top Bar ---
 function TopBar() {
   return (
-    <div className="flex items-center gap-3 px-4 py-2 bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50 overflow-x-auto max-w-full">
-      <div className="flex items-center gap-2 text-amber-200 shrink-0">
-        <Coins className="size-4" />
-        <span className="text-xs">Gold Coins</span>
-        <Pill>2,000,000</Pill>
-      </div>
+    <div className="w-full bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50">
+      {/* container that never exceeds the viewport and respects the notch */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
+        {/* min-w-0 prevents flex children from causing overflow */}
+        <div className="flex items-center gap-2 md:gap-3 py-2 flex-wrap sm:flex-nowrap min-w-0">
+          <div className="flex items-center gap-2 text-amber-200 shrink-0">
+            <Coins className="size-4" />
+            <span className="text-xs">Gold Coins</span>
+            <Pill>2,000,000</Pill>
+          </div>
 
-      <div className="flex items-center gap-2 text-amber-200 shrink-0">
-        <Crown className="size-4" />
-        <span className="text-xs">VIP</span>
-        <Chip>Level 10</Chip>
-      </div>
+          <div className="flex items-center gap-2 text-amber-200 shrink-0">
+            <Crown className="size-4" />
+            <span className="text-xs">VIP</span>
+            <Chip>Level 10</Chip>
+          </div>
 
-      <div className="ml-auto flex items-center gap-2 shrink-0">
-        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700">
-          <Search className="size-4 text-zinc-400" />
-          <input
-            placeholder="Search games"
-            className="bg-transparent outline-none text-sm placeholder:text-zinc-500"
-          />
+          {/* right side; min-w-0 keeps the input from forcing overflow */}
+          <div className="ml-auto flex items-center gap-2 min-w-0">
+            {/* input gets an explicit max width and w-full so it shrinks nicely */}
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700 w-full max-w-[200px]">
+              <Search className="size-4 text-zinc-400 shrink-0" />
+              <input
+                placeholder="Search games"
+                className="bg-transparent outline-none text-sm placeholder:text-zinc-500 w-full min-w-0"
+              />
+            </div>
+
+            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
+              <ShoppingBag className="size-4" /> Store
+            </button>
+            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+              <User className="size-4" /> Account
+            </button>
+            <button className="hidden sm:inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+              <Settings className="size-4" /> Settings
+            </button>
+          </div>
         </div>
-        <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
-          <ShoppingBag className="size-4" /> Store
-        </button>
-        <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-          <User className="size-4" /> Account
-        </button>
-        <button className="hidden sm:inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-          <Settings className="size-4" /> Settings
-        </button>
       </div>
     </div>
   );
