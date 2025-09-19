@@ -11,26 +11,29 @@ import {
   Search,
   ChevronRight,
 } from "lucide-react";
+import type { ReactNode } from "react";
 
 /* ---------- Small UI helpers ---------- */
-const Chip = ({ children }: { children: any }) => (
+const Chip = ({ children }: { children: ReactNode }) => (
   <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/10 text-yellow-300 border border-yellow-400/30 px-3 py-1 text-xs font-medium shadow-[inset_0_0_0_1px_rgba(0,0,0,.2)]">
     {children}
   </span>
 );
-const Pill = ({ children }: { children: any }) => (
+
+const Pill = ({ children }: { children: ReactNode }) => (
   <span className="inline-flex items-center rounded-full bg-zinc-800/70 border border-zinc-700 px-3 py-1 text-xs text-zinc-200">
     {children}
   </span>
 );
+
 const Section = ({
   title,
   children,
   cta,
 }: {
   title: string;
-  children: any;
-  cta?: any;
+  children: ReactNode;
+  cta?: ReactNode;
 }) => (
   <section className="mt-8">
     <div className="flex items-center justify-between mb-3">
@@ -90,7 +93,7 @@ function GameTile({ name }: { name: string }) {
   );
 }
 
-/* ---------- Mobile-safe Top Bar (keep ONLY this one) ---------- */
+/* ---------- Mobile-safe Top Bar ---------- */
 function TopBar() {
   return (
     <div className="w-full bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50">
@@ -171,6 +174,7 @@ function Grid({ items }: { items: { key: string; label: string }[] }) {
     </div>
   );
 }
+
 function FooterCTA() {
   return (
     <div className="mt-10 mb-8">
