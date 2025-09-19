@@ -11,16 +11,15 @@ import {
   Search,
   ChevronRight,
 } from "lucide-react";
-import type { ReactNode } from "react";
 
-/* ---------- Small UI helpers ---------- */
-const Chip = ({ children }: { children: ReactNode }) => (
+// --- Helper UI bits ---
+const Chip = ({ children }: { children: any }) => (
   <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/10 text-yellow-300 border border-yellow-400/30 px-3 py-1 text-xs font-medium shadow-[inset_0_0_0_1px_rgba(0,0,0,.2)]">
     {children}
   </span>
 );
 
-const Pill = ({ children }: { children: ReactNode }) => (
+const Pill = ({ children }: { children: any }) => (
   <span className="inline-flex items-center rounded-full bg-zinc-800/70 border border-zinc-700 px-3 py-1 text-xs text-zinc-200">
     {children}
   </span>
@@ -32,8 +31,8 @@ const Section = ({
   cta,
 }: {
   title: string;
-  children: ReactNode;
-  cta?: ReactNode;
+  children: any;
+  cta?: any;
 }) => (
   <section className="mt-8">
     <div className="flex items-center justify-between mb-3">
@@ -46,7 +45,7 @@ const Section = ({
   </section>
 );
 
-/* ---------- Sample data ---------- */
+// --- Data ---
 const SLOTS = [
   { key: "wild-joker", label: "Wild Joker" },
   { key: "treasure-trove", label: "Treasure Trove" },
@@ -70,7 +69,7 @@ const CARDS = [
   { key: "three-card", label: "Three Card" },
 ];
 
-/* ---------- Game tile ---------- */
+// --- Game Tile ---
 function GameTile({ name }: { name: string }) {
   return (
     <motion.button
@@ -95,50 +94,43 @@ function GameTile({ name }: { name: string }) {
   );
 }
 
-/* ---------- Mobile-safe Top Bar ---------- */
+// --- Top Bar ---
 function TopBar() {
   return (
-    <div className="w-full bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
-        <div className="flex items-center gap-2 md:gap-3 py-2 flex-wrap sm:flex-nowrap min-w-0">
-          <div className="flex items-center gap-2 text-amber-200 shrink-0">
-            <Coins className="size-4" />
-            <span className="text-xs">Gold Coins</span>
-            <Pill>2,000,000</Pill>
-          </div>
-
-          <div className="flex items-center gap-2 text-amber-200 shrink-0">
-            <Crown className="size-4" />
-            <span className="text-xs">VIP</span>
-            <Chip>Level 10</Chip>
-          </div>
-
-          <div className="ml-auto flex items-center gap-2 min-w-0">
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700 w-full max-w-[200px]">
-              <Search className="size-4 text-zinc-400 shrink-0" />
-              <input
-                placeholder="Search games"
-                className="bg-transparent outline-none text-sm placeholder:text-zinc-500 w-full min-w-0"
-              />
-            </div>
-
-            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
-              <ShoppingBag className="size-4" /> Store
-            </button>
-            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-              <User className="size-4" /> Account
-            </button>
-            <button className="hidden sm:inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-              <Settings className="size-4" /> Settings
-            </button>
-          </div>
+    <div className="flex items-center gap-3 px-4 py-2 bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50">
+      <div className="flex items-center gap-2 text-amber-200">
+        <Coins className="size-4" />
+        <span className="text-xs">Gold Coins</span>
+        <Pill>2,000,000</Pill>
+      </div>
+      <div className="flex items-center gap-2 text-amber-200">
+        <Crown className="size-4" />
+        <span className="text-xs">VIP</span>
+        <Chip>Level 10</Chip>
+      </div>
+      <div className="ml-auto flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700">
+          <Search className="size-4 text-zinc-400" />
+          <input
+            placeholder="Search games"
+            className="bg-transparent outline-none text-sm placeholder:text-zinc-500"
+          />
         </div>
+        <button className="inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
+          <ShoppingBag className="size-4" /> Store
+        </button>
+        <button className="inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+          <User className="size-4" /> Account
+        </button>
+        <button className="hidden sm:inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+          <Settings className="size-4" /> Settings
+        </button>
       </div>
     </div>
   );
 }
 
-/* ---------- Header / Logo ---------- */
+// --- Header / Logo ---
 function MarqueeLogo() {
   return (
     <div className="relative flex flex-col items-center text-center py-6">
@@ -166,7 +158,7 @@ function MarqueeLogo() {
   );
 }
 
-/* ---------- Grid & Footer ---------- */
+// --- Category Grid ---
 function Grid({ items }: { items: { key: string; label: string }[] }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
@@ -177,6 +169,7 @@ function Grid({ items }: { items: { key: string; label: string }[] }) {
   );
 }
 
+// --- Footer CTA ---
 function FooterCTA() {
   return (
     <div className="mt-10 mb-8">
@@ -188,13 +181,13 @@ function FooterCTA() {
   );
 }
 
-/* ---------- Page ---------- */
+// --- Page ---
 export default function SilverCoinLanding() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1a0f08] via-[#2a1309] to-[#120904] text-amber-50">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(70%_50%_at_50%_0%,rgba(255,200,50,.15),transparent_60%)]" />
       <TopBar />
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 overflow-hidden">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6">
         <MarqueeLogo />
         <Section
           title="Slots"
