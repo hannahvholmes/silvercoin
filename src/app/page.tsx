@@ -55,12 +55,14 @@ const SLOTS = [
   { key: "neon-7s", label: "Neon 7s" },
   { key: "lucky-lanterns", label: "Lucky Lanterns" },
 ];
+
 const TABLES = [
   { key: "roulette", label: "Roulette" },
   { key: "craps", label: "Craps" },
   { key: "wheel", label: "Wheel" },
   { key: "baccarat", label: "Baccarat" },
 ];
+
 const CARDS = [
   { key: "blackjack", label: "Blackjack" },
   { key: "holdem", label: "Texas Hold'em" },
