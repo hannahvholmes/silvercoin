@@ -181,28 +181,40 @@ function FooterCTA() {
   );
 }
 
-// --- Page ---
-export default function SilverCoinLanding() {
+// --- Top Bar ---
+function TopBar() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1a0f08] via-[#2a1309] to-[#120904] text-amber-50">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(70%_50%_at_50%_0%,rgba(255,200,50,.15),transparent_60%)]" />
-      <TopBar />
-      <main className="mx-auto max-w-7xl px-4 sm:px-6">
-        <MarqueeLogo />
-        <Section
-          title="Slots"
-          cta={<a className="text-xs text-amber-300 hover:underline" href="#">See all</a>}
-        >
-          <Grid items={SLOTS} />
-        </Section>
-        <Section title="Table Games">
-          <Grid items={TABLES} />
-        </Section>
-        <Section title="Card Games">
-          <Grid items={CARDS} />
-        </Section>
-        <FooterCTA />
-      </main>
+    <div className="flex items-center gap-3 px-4 py-2 bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50 overflow-x-auto max-w-full">
+      <div className="flex items-center gap-2 text-amber-200 shrink-0">
+        <Coins className="size-4" />
+        <span className="text-xs">Gold Coins</span>
+        <Pill>2,000,000</Pill>
+      </div>
+
+      <div className="flex items-center gap-2 text-amber-200 shrink-0">
+        <Crown className="size-4" />
+        <span className="text-xs">VIP</span>
+        <Chip>Level 10</Chip>
+      </div>
+
+      <div className="ml-auto flex items-center gap-2 shrink-0">
+        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700">
+          <Search className="size-4 text-zinc-400" />
+          <input
+            placeholder="Search games"
+            className="bg-transparent outline-none text-sm placeholder:text-zinc-500"
+          />
+        </div>
+        <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
+          <ShoppingBag className="size-4" /> Store
+        </button>
+        <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+          <User className="size-4" /> Account
+        </button>
+        <button className="hidden sm:inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+          <Settings className="size-4" /> Settings
+        </button>
+      </div>
     </div>
   );
 }
