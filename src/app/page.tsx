@@ -12,19 +12,17 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-// --- Helper UI bits ---
+/* ---------- Small UI helpers ---------- */
 const Chip = ({ children }: { children: any }) => (
   <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/10 text-yellow-300 border border-yellow-400/30 px-3 py-1 text-xs font-medium shadow-[inset_0_0_0_1px_rgba(0,0,0,.2)]">
     {children}
   </span>
 );
-
 const Pill = ({ children }: { children: any }) => (
   <span className="inline-flex items-center rounded-full bg-zinc-800/70 border border-zinc-700 px-3 py-1 text-xs text-zinc-200">
     {children}
   </span>
 );
-
 const Section = ({
   title,
   children,
@@ -45,7 +43,7 @@ const Section = ({
   </section>
 );
 
-// --- Data ---
+/* ---------- Sample data ---------- */
 const SLOTS = [
   { key: "wild-joker", label: "Wild Joker" },
   { key: "treasure-trove", label: "Treasure Trove" },
@@ -54,14 +52,12 @@ const SLOTS = [
   { key: "neon-7s", label: "Neon 7s" },
   { key: "lucky-lanterns", label: "Lucky Lanterns" },
 ];
-
 const TABLES = [
   { key: "roulette", label: "Roulette" },
   { key: "craps", label: "Craps" },
   { key: "wheel", label: "Wheel" },
   { key: "baccarat", label: "Baccarat" },
 ];
-
 const CARDS = [
   { key: "blackjack", label: "Blackjack" },
   { key: "holdem", label: "Texas Hold'em" },
@@ -69,7 +65,7 @@ const CARDS = [
   { key: "three-card", label: "Three Card" },
 ];
 
-// --- Game Tile ---
+/* ---------- Game tile ---------- */
 function GameTile({ name }: { name: string }) {
   return (
     <motion.button
@@ -94,43 +90,50 @@ function GameTile({ name }: { name: string }) {
   );
 }
 
-// --- Top Bar ---
+/* ---------- Mobile-safe Top Bar (keep ONLY this one) ---------- */
 function TopBar() {
   return (
-    <div className="flex items-center gap-3 px-4 py-2 bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50">
-      <div className="flex items-center gap-2 text-amber-200">
-        <Coins className="size-4" />
-        <span className="text-xs">Gold Coins</span>
-        <Pill>2,000,000</Pill>
-      </div>
-      <div className="flex items-center gap-2 text-amber-200">
-        <Crown className="size-4" />
-        <span className="text-xs">VIP</span>
-        <Chip>Level 10</Chip>
-      </div>
-      <div className="ml-auto flex items-center gap-2">
-        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700">
-          <Search className="size-4 text-zinc-400" />
-          <input
-            placeholder="Search games"
-            className="bg-transparent outline-none text-sm placeholder:text-zinc-500"
-          />
+    <div className="w-full bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
+        <div className="flex items-center gap-2 md:gap-3 py-2 flex-wrap sm:flex-nowrap min-w-0">
+          <div className="flex items-center gap-2 text-amber-200 shrink-0">
+            <Coins className="size-4" />
+            <span className="text-xs">Gold Coins</span>
+            <Pill>2,000,000</Pill>
+          </div>
+
+          <div className="flex items-center gap-2 text-amber-200 shrink-0">
+            <Crown className="size-4" />
+            <span className="text-xs">VIP</span>
+            <Chip>Level 10</Chip>
+          </div>
+
+          <div className="ml-auto flex items-center gap-2 min-w-0">
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700 w-full max-w-[200px]">
+              <Search className="size-4 text-zinc-400 shrink-0" />
+              <input
+                placeholder="Search games"
+                className="bg-transparent outline-none text-sm placeholder:text-zinc-500 w-full min-w-0"
+              />
+            </div>
+
+            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
+              <ShoppingBag className="size-4" /> Store
+            </button>
+            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+              <User className="size-4" /> Account
+            </button>
+            <button className="hidden sm:inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
+              <Settings className="size-4" /> Settings
+            </button>
+          </div>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
-          <ShoppingBag className="size-4" /> Store
-        </button>
-        <button className="inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-          <User className="size-4" /> Account
-        </button>
-        <button className="hidden sm:inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-          <Settings className="size-4" /> Settings
-        </button>
       </div>
     </div>
   );
 }
 
-// --- Header / Logo ---
+/* ---------- Header / Logo ---------- */
 function MarqueeLogo() {
   return (
     <div className="relative flex flex-col items-center text-center py-6">
@@ -158,7 +161,7 @@ function MarqueeLogo() {
   );
 }
 
-// --- Category Grid ---
+/* ---------- Grid & Footer ---------- */
 function Grid({ items }: { items: { key: string; label: string }[] }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
@@ -168,8 +171,6 @@ function Grid({ items }: { items: { key: string; label: string }[] }) {
     </div>
   );
 }
-
-// --- Footer CTA ---
 function FooterCTA() {
   return (
     <div className="mt-10 mb-8">
@@ -181,49 +182,28 @@ function FooterCTA() {
   );
 }
 
-// --- Top Bar ---
-function TopBar() {
+/* ---------- Page ---------- */
+export default function SilverCoinLanding() {
   return (
-    <div className="w-full bg-zinc-950/70 border-b border-amber-400/10 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/50">
-      {/* container that never exceeds the viewport and respects the notch */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
-        {/* min-w-0 prevents flex children from causing overflow */}
-        <div className="flex items-center gap-2 md:gap-3 py-2 flex-wrap sm:flex-nowrap min-w-0">
-          <div className="flex items-center gap-2 text-amber-200 shrink-0">
-            <Coins className="size-4" />
-            <span className="text-xs">Gold Coins</span>
-            <Pill>2,000,000</Pill>
-          </div>
-
-          <div className="flex items-center gap-2 text-amber-200 shrink-0">
-            <Crown className="size-4" />
-            <span className="text-xs">VIP</span>
-            <Chip>Level 10</Chip>
-          </div>
-
-          {/* right side; min-w-0 keeps the input from forcing overflow */}
-          <div className="ml-auto flex items-center gap-2 min-w-0">
-            {/* input gets an explicit max width and w-full so it shrinks nicely */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 border border-zinc-700 w-full max-w-[200px]">
-              <Search className="size-4 text-zinc-400 shrink-0" />
-              <input
-                placeholder="Search games"
-                className="bg-transparent outline-none text-sm placeholder:text-zinc-500 w-full min-w-0"
-              />
-            </div>
-
-            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-amber-500 text-zinc-950 px-4 py-1.5 text-sm font-semibold shadow hover:bg-amber-400">
-              <ShoppingBag className="size-4" /> Store
-            </button>
-            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-4 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-              <User className="size-4" /> Account
-            </button>
-            <button className="hidden sm:inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700">
-              <Settings className="size-4" /> Settings
-            </button>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-[#1a0f08] via-[#2a1309] to-[#120904] text-amber-50">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(70%_50%_at_50%_0%,rgba(255,200,50,.15),transparent_60%)]" />
+      <TopBar />
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 overflow-hidden">
+        <MarqueeLogo />
+        <Section
+          title="Slots"
+          cta={<a className="text-xs text-amber-300 hover:underline" href="#">See all</a>}
+        >
+          <Grid items={SLOTS} />
+        </Section>
+        <Section title="Table Games">
+          <Grid items={TABLES} />
+        </Section>
+        <Section title="Card Games">
+          <Grid items={CARDS} />
+        </Section>
+        <FooterCTA />
+      </main>
     </div>
   );
 }
